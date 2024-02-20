@@ -5,7 +5,7 @@
     *   Ram:Transcend DDR2 800 2G*2
     *   SSD:Samsung MZ7TE256HMHP-000L7 240G(LENOVO 00FC441)
     *   HDD:Seagatev IronWolf 3.5吋2TB*2
-    *   SFX Psu 250W
+    *   Power:SFX Psu 250W
 ## 硬體
 原先從Hardwolf收來一個整台的二手電腦，內涵p5kpl-am epu主機板和其CPU、400W電源供應器。因為需要將整機小型化，便將主機板搬運至庫存的另一個小型機殼`因為電源故障而沒有電源`的[I-COOLTW 水玲瓏](https://24h.pchome.com.tw/prod/AGAD6Y-A82584775)舊版機殼。<br>
 
