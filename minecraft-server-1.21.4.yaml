@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    container_name: minecraft-server-1.21.4
+    ports:
+      - "25565:25565" # Java 版連線
+      - "19132:19132/udp" # 基岩版連線
+    environment:
+      EULA: "TRUE"
+      VERSION: "1.21.4"
+      MEMORY: "3G"
+      MOTD: "私人Minecraft伺服器"
+      ONLINE_MODE: "TRUE"  # 如果要允許離線玩家進入，改為 "FALSE"
+      TYPE: "PAPER"  # Paper 伺服器（推薦）
+      ENABLE_GEYSER: "TRUE"  # 啟用 GeyserMC
+      ENABLE_FLOODGATE: "TRUE"  # 啟用 Floodgate（允許基岩版玩家連線）
+    volumes:
+      - /srv/dev-disk-by-uuid-e508bb33-1bb6-4daa-ad93-08f1edae1580/Data/minecraft:/data
+    restart: unless-stopped
