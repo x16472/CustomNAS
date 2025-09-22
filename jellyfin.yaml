@@ -1,4 +1,3 @@
----
 version: "2.1"
 services:
   jellyfin:
@@ -8,14 +7,16 @@ services:
       - PUID=998
       - PGID=100
       - TZ=Asia/Taipei
-      - JELLYFIN_PublishedServerUrl=10.10.0.4 #optional
-      - Device=/dev/dri
+      - JELLYFIN_PublishedServerUrl=10.10.0.3 #optional
     volumes:
       - /srv/dev-disk-by-uuid-e508bb33-1bb6-4daa-ad93-08f1edae1580/config/jellyfin:/config
+      - /srv/dev-disk-by-uuid-e508bb33-1bb6-4daa-ad93-08f1edae1580/config/jellyfin/fonts:/config/fonts
       - /srv/dev-disk-by-uuid-e508bb33-1bb6-4daa-ad93-08f1edae1580/Data/jpnmovies:/data/jpnmovies
       - /srv/dev-disk-by-uuid-e508bb33-1bb6-4daa-ad93-08f1edae1580/Data/movies:/data/movies
       - /srv/dev-disk-by-uuid-e508bb33-1bb6-4daa-ad93-08f1edae1580/Data/tvshows:/data/tvshows
       - /srv/dev-disk-by-uuid-e508bb33-1bb6-4daa-ad93-08f1edae1580/Data/music:/data/music
+    devices:
+      - /dev/dri:/dev/dri
     ports:
       - 8096:8096
       - 8920:8920 #optional
