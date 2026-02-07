@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  # 代理伺服器 (入口)
+  velocity:
+    image: itzg/mc-proxy:latest
+    container_name: mc-proxy-test
+    ports:
+      - "25566:25577" # 玩家連 25566 進入大廳
+    environment:
+      TYPE: "VELOCITY"
+      MEMORY: "512m"
+      ENFORCE_SECURE_PROFILE: "false"
+    volumes:
+      - /srv/dev-disk-by-uuid-91829c7d-7df9-45c2-a453-46cfe6ad12f5/HardDrive150/Data/proxy_config:/server
+
+  # 測試世界 (作為大廳 Lobby)
+  lobby:
+    image: itzg/minecraft-server:latest
+    container_name: mc-lobby-test
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      VERSION: "1.21.4"
+      ONLINE_MODE: "FALSE" # 代理模式下必須設為 FALSE
+      VELOCITY_SECRET: "your_secret_key" # 與代理同步的安全金鑰
+    volumes:
+      - /srv/dev-disk-by-uuid-91829c7d-7df9-45c2-a453-46cfe6ad12f5/HardDrive150/Data/minecraft:/data
+
+  # 舊世界 (作為生存服 Survival)
+  survival:
+    image: itzg/minecraft-server:latest
+    container_name: mc-survival-old
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      VERSION: "1.21.4"
+      ONLINE_MODE: "FALSE"
+      LEVEL: "12w39a"
+      VELOCITY_SECRET: "your_secret_key"
+    volumes:
+      # 掛載另一個磁碟的舊世界地圖
+      - /srv/dev-disk-by-uuid-e508bb33-1bb6-4daa-ad93-08f1edae1580/Data/minecraft:/data/12w39a
+      - /srv/dev-disk-by-uuid-e508bb33-1bb6-4daa-ad93-08f1edae1580/Data/minecraft:/data/12w39a_nether
+      - /srv/dev-disk-by-uuid-e508bb33-1bb6-4daa-ad93-08f1edae1580/Data/minecraft:/data/12w39a_the_end
+networks:
+  default:
+    name: mc-proxy-net
