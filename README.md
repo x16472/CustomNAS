@@ -1,4 +1,4 @@
-# 自組NAS筆記
+# 初次配置
 -   配備
     *   CPU:Intel® Pentium® E6300
     *   Motherboard:ASUS p5kpl-am epu
@@ -43,3 +43,8 @@
 之後我回坑了Minecraft，便把這套NAS改裝成Minecraft 1.21的伺服器，雖然說是套用既有的Docker鏡像，但這鏡像包含可讓基岩版連線的功能。但是GeyserMC偶爾會需要另外更新，這時就運用前面提到的命令列操作，也就是Linux中的CP指令。不過單純敲指令操作略為麻煩，難怪後來大多數玩家會進化成使用FTP操作。
 
 基於以上的「基本功」，我還嘗試了安裝插件，也透過有著密切交互的Minecraft伺服器，在伺服器的運作上，又多了一層理解。
+# 待辦事項
+- [x] 日常清潔灰塵
+- [ ] 目前Raid 1掛掉一顆硬碟中，待升級硬碟，考慮4t~6t及是否要組Raid 5
+- [ ] 去蝦皮買張洋垃圾10G網卡
+- [ ] 從OMV換成Proxmox VE的ALL IN ONE
