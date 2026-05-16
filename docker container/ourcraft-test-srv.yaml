@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  minecraft_test:
+    image: itzg/minecraft-server:latest
+    container_name: minecraft-test-srv
+    ports:
+      - "25566:25566" # Java 版連線
+      - "19133:19133/udp" # 基岩版連線
+    mem_limit: 4.5g # 不可低於MEMORY的數值，限制容器的最大記憶體
+    cpus: 2 #限制容器可使用的核心數量
+    environment:
+      TZ: "Asia/Taipei"
+      SERVER_PORT: 25566
+      GEYSER_PORT: 19133
+      
+      EULA: "TRUE"
+      VERSION: "1.21.4"
+      MEMORY: "4G"
+      MODE: "survival" # 可選值：survival、creative、adventure、spectator
+
+      MOTD: "Ourcraft測試平台"
+      ONLINE_MODE: "TRUE"  # 如果要允許離線玩家進入，改為 "FALSE"
+      TYPE: "PAPER"  # Paper 伺服器（推薦）
+      ENABLE_GEYSER: "TRUE"  # 啟用 GeyserMC
+      ENABLE_FLOODGATE: "TRUE"  # 啟用 Floodgate（允許基岩版玩家連線）
+
+    volumes:
+      - /srv/dev-disk-by-uuid-91829c7d-7df9-45c2-a453-46cfe6ad12f5/HardDrive150/Data/minecraft:/data
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
