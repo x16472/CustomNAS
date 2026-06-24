@@ -4,7 +4,7 @@ services:
     image: itzg/minecraft-server:latest
     container_name: minecraft-test-srv
     ports:
-      - "25566:25566" # Java 版連線
+      - "25566:25565" # Java 版連線
       - "19133:19133/udp" # 基岩版連線
     mem_limit: 4.5g # 不可低於MEMORY的數值，限制容器的最大記憶體
     cpus: 2 #限制容器可使用的核心數量
@@ -24,6 +24,11 @@ services:
       ENABLE_GEYSER: "TRUE"  # 啟用 GeyserMC
       ENABLE_FLOODGATE: "TRUE"  # 啟用 Floodgate（允許基岩版玩家連線）
 
+      SIMULATION_DISTANCE: "6"
+      VIEW_DISTANCE: "10"
+
+      USE_AIKAR_FLAGS: "true"
+      GEYSER_RPC_ADDRESS: "0.0.0.0"
     volumes:
       - /srv/dev-disk-by-uuid-91829c7d-7df9-45c2-a453-46cfe6ad12f5/HardDrive150/Data/minecraft:/data
       - /etc/localtime:/etc/localtime:ro
