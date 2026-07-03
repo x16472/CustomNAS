@@ -17,19 +17,19 @@ docker exec minecraft-server-1.21.4 rcon-cli say save-all && docker stop -t 30 m
 
 ---
 確保擁有者是 root
-```sh
+```bash
 chown root:root /root/stop_mc.sh
 ```
 確保有執行權限
-```sh
+```bash
 chmod +x /root/stop_mc.sh
 ```
 
 顯示紀錄
-```sh
+```bash
 chown -v root:root /root/stop_mc.sh
 ```
 誰執行了檔案
-```sh
+```bash
 ls -lu /root/stop_mc.sh
 ```
